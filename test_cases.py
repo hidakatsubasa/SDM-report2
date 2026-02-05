@@ -23,9 +23,23 @@ class TestCalc (unittest.TestCase):
         def test_valid_mix (self):
                 self.assertEqual (999, calc(1,999))
                 self.assertEqual (999, calc(999,1))
-                
+
+        # --- 2. 無効同値（範囲外・境界値エラー） --- 
+        # Aが下限未満 (0)       
         def test_sample2 (self):
                 self.assertEqual (-1, calc(0,150))
+
+        # [追加] Bが下限未満 (0)
+        def test_invalid_b_zero (self):
+                self.assertEqual (-1, calc(150,0))
+
+        # [追加] Aが上限超え (1000)
+        def test_invalid_a_max_over (self):
+                self.assertEqual (-1, calc(1000,150))
+
+        # [追加] Bが上限超え (1000)
+        def test_invalid_b_max_over (self):
+                self.assertEqual (-1, calc(150,1000))
 
         def test_sample3 (self):
                 self.assertEqual (-1, calc('a','b'))
