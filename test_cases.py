@@ -7,9 +7,23 @@ from calc_mul import calc
 
 class TestCalc (unittest.TestCase):
 
+        # --- 1. 有効同値（正常系） ---
         def test_sample1 (self):
                 self.assertEqual (21, calc(3,7))
 
+        # [追加] 境界値: 最小値 (1, 1)
+        def test_valid_min (self):
+                self.assertEqual (1, calc(1,1))
+
+        # [追加] 境界値: 最大値 (999, 999)
+        def test_valid_max (self):
+                self.assertEqual (998001, calc(999,999))
+
+        # [追加] 境界値: 最小と最大の組み合わせ
+        def test_valid_mix (self):
+                self.assertEqual (999, calc(1,999))
+                self.assertEqual (999, calc(999,1))
+                
         def test_sample2 (self):
                 self.assertEqual (-1, calc(0,150))
 
