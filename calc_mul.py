@@ -5,8 +5,8 @@ import re
 def calc(A,B):
         ai=str(A)
         bi=str(B)
-        p = re.compile('\d+(\.\d+)?')
-        if p.match(ai) or p.match(bi):
+        # 修正: 小数を許容せず、先頭から末尾まで数字のみのパターンかチェック
+        if ai.isdigit() and bi.isdigit():
                 a=float(ai)
                 b=float(bi)
                 if 0<a and a<b and b<1000:
