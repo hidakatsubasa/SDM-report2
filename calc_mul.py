@@ -7,20 +7,16 @@ def calc(A,B):
         bi=str(B)
         # 修正: 小数を許容せず、先頭から末尾まで数字のみのパターンかチェック
         if ai.isdigit() and bi.isdigit():
-                a=float(ai)
-                b=float(bi)
-                if 0<a and a<b and b<1000:
-                        valid=True
-                else:
-                        valid=False
-        else:
-                valid=False
-                
-        if valid:
-                ans=a*b
-                return ans
-        else:
-                return -1
+                # 修正: 整数のみであるためfloatをintに変更
+                a=int(ai)
+                b=int(bi)
+
+                # 修正: 範囲チェックの仕様を変更 (1から999まで)
+                if 1 <= a <= 999 and 1 <= b <= 999:
+                        return a * b
+            
+        # 条件を満たさない場合は -1 を返す
+        return -1
         
                 
 def main ():
