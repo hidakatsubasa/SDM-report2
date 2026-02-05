@@ -40,10 +40,22 @@ class TestCalc (unittest.TestCase):
         # [追加] Bが上限超え (1000)
         def test_invalid_b_max_over (self):
                 self.assertEqual (-1, calc(150,1000))
+        
+        # --- 3. 無効同値（型エラー） ---
 
+        # 両方が文字列
         def test_sample3 (self):
                 self.assertEqual (-1, calc('a','b'))
 
+        # [追加] 片方が文字列
+        def test_invalid_type_string (self):
+                self.assertEqual (-1, calc(10,"xyz"))
+
+        # Aが小数
         def test_sample4 (self):
                 self.assertEqual (-1, calc(0.1,999))
+                
+        # [追加] Bが小数
+        def test_invalid_type_float (self):
+                self.assertEqual (-1, calc(999,1.5))
 
